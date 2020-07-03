@@ -1,0 +1,4 @@
+dist
+node_modules
+.dragaux
+yarn-error.log

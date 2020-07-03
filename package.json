@@ -1,0 +1,26 @@
+{
+  "name": "@alipay/dragaux",
+  "version": "0.0.1",
+  "main": "index.js",
+  "author": {
+    "name": "HuSong",
+    "email": "kevin.hs@alipay.com"
+  },
+  "scripts": {
+    "dev": "tsc -w"
+  },
+  "bin": {
+    "dra": "bin/cli"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "prettier": "^2.0.5",
+    "typescript": "^3.9.5"
+  },
+  "dependencies": {
+    "cac": "^6.5.10",
+    "chalk": "^4.1.0",
+    "json2md": "^1.7.0",
+    "playwright": "^1.1.1"
+  }
+}
