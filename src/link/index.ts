@@ -1,5 +1,5 @@
 import debug from "debug";
-import fs, { promises } from "fs-extra";
+import fs from "fs-extra";
 import path from "path";
 import inquirer from "inquirer";
 import chalk from "chalk";
@@ -27,10 +27,14 @@ export async function link(options: LinkOptions) {
     return fs.symlink(pkg.pkgPath, destPath).catch((e) => console.error(e));
   });
   await Promise.all(promises);
-  console.log(chalk.green(`[SUCCESS] `) + 'link 成功，请确保仓库没有 external o3')
-  console.log(chalk.green(`[SUCCESS] `) + `进入 ${options.oasisRoot} 可以开启 watch`)
+  console.log(chalk.green(`[SUCCESS] `) + "link 成功，请确保仓库没有 external o3");
+  console.log(chalk.green(`[SUCCESS] `) + `进入 ${options.oasisRoot} 可以开启 watch`);
 }
 
+/**
+ * 获取 Oasis Packages
+ * @param oasisRoot 
+ */
 function getOasisPkgs(oasisRoot: string) {
   let pkgJson: object | any;
   try {
@@ -57,6 +61,11 @@ function getOasisPkgs(oasisRoot: string) {
     .filter((pkg) => pkg);
 }
 
+/**
+ * 删除 tnpm link 文件
+ * @param nodeModulePath 
+ * @param pkgs 
+ */
 function removeTnpmLink(nodeModulePath: string, pkgs: { pkgPath: string; pkgJson: object | any }[]) {
   const deps = fs.readdirSync(nodeModulePath).filter((dep) => dep.startsWith("_@alipay_"));
   const checkDeps = pkgs.map(({ pkgJson }) => "_" + pkgJson.name.replace("/", "_"));
@@ -71,6 +80,10 @@ function removeTnpmLink(nodeModulePath: string, pkgs: { pkgPath: string; pkgJson
   deleteDeps.forEach((dep) => {
     fs.remove(path.join(nodeModulePath, dep));
   });
+}
+
+function cacheOasisRoot() {
+  
 }
 
 async function queryOasisRoot() {
