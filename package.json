@@ -12,6 +12,7 @@
   "bin": {
     "dra": "bin/cli"
   },
+  "types": "types",
   "license": "MIT",
   "devDependencies": {
     "@types/debug": "^4.1.5",
