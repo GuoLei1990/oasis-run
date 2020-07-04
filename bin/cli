@@ -4,7 +4,7 @@ const pkg = require("../package.json");
 const path = require("path");
 const defaultDir = ".dragaux";
 const defaultConfigFile = "config.js";
-const { e2e, gen } = require("../dist");
+const { e2e, gen, link } = require("../dist");
 
 cli
   .command("e2e")
@@ -33,6 +33,12 @@ cli
       });
     });
   });
+
+cli.command("link [oasis-dir]", "link oasis root repo").action((dir, options) => {
+  link({ root: process.env.PWD, oasisRoot: dir }).catch(e=>{
+    console.error(e);
+  });
+});
 
 // Display help message when `-h` or `--help` appears
 cli.help();
