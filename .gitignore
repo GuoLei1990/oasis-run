@@ -1,4 +1,6 @@
 dist
 node_modules
 .dragaux
+types
+tsconfig.tsbuildinfo
 yarn-error.log
