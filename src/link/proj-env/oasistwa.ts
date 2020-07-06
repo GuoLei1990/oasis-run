@@ -26,9 +26,9 @@ class OasisTWA {
       isModify = true;
     }
 
-    const re1 = configContent.match(`(.+https://g.alipay.com/@alipay/o3.+)`);
+    const re1 = configContent.match(`(.+'https://g.alipay.com/@alipay/o3.+')`);
     if (re1 && !re1[0].trim().startsWith("//")) {
-      configContent = configContent.replace(`'@alipay/o3': 'window.o3'`, `// '@alipay/o3': 'window.o3'`);
+      configContent = configContent.replace(`'https://g.alipay.com/@alipay/o3@2.3.0',`, `// 'https://g.alipay.com/@alipay/o3@2.3.0',`);
       isModify = true;
     }
 
