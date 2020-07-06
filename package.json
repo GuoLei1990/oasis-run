@@ -1,5 +1,5 @@
 {
-  "name": "@alipay/dragaux",
+  "name": "@alipay/oasis-run",
   "version": "0.0.1",
   "main": "index.js",
   "author": {
@@ -10,7 +10,7 @@
     "dev": "tsc -w"
   },
   "bin": {
-    "dra": "bin/cli"
+    "oa": "bin/cli"
   },
   "types": "types",
   "license": "MIT",
