@@ -10,6 +10,9 @@
     "dev": "tsc -w",
     "build": "tsc"
   },
+  "publishConfig": {
+    "registry": "https://registry.npm.alibaba-inc.com"
+  },
   "bin": {
     "oar": "bin/cli"
   },
