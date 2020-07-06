@@ -15,19 +15,38 @@ class OasisTWA {
     return pkg.name === "oasistwa";
   }
 
+  private commentExternal(configContent: string): [string, boolean?] {
+    const re = configContent.match(`(.+'@alipay/o3': 'window.o3')`);
+    let isModify = false;
+    if (!re) {
+      return [null];
+    }
+    if (!re[0].trim().startsWith("//")) {
+      configContent = configContent.replace(`'@alipay/o3': 'window.o3'`, `// '@alipay/o3': 'window.o3'`);
+      isModify = true;
+    }
+
+    const re1 = configContent.match(`(.+https://g.alipay.com/@alipay/o3.+)`);
+    if (re1 && !re1[0].trim().startsWith("//")) {
+      configContent = configContent.replace(`'@alipay/o3': 'window.o3'`, `// '@alipay/o3': 'window.o3'`);
+      isModify = true;
+    }
+
+    return [configContent, isModify];
+  }
+
   modifyExternal(root: string) {
     if (this.check(root)) {
       const configPath = path.join(root, this.configRelative);
       let configContent = fs.readFileSync(configPath, { encoding: "utf-8" });
-      const re = configContent.match(`(.+'@alipay/o3': 'window.o3')`);
-      if (!re) {
+      const [newContent, isModify] = this.commentExternal(configContent);
+      if (!newContent) {
         console.log(chalk.redBright(`[LINK] 没有找到配置文件: ${this.configRelative}`));
         return false;
+      } else if (isModify) {
+        fs.writeFileSync(configPath, newContent, { encoding: "utf-8" });
       }
-      if (!re[0].trim().startsWith("//")) {
-        configContent = configContent.replace(`'@alipay/o3': 'window.o3'`, `// '@alipay/o3': 'window.o3'`);
-        fs.writeFileSync(configPath, configContent, { encoding: "utf-8" });
-      }
+
       console.log(
         chalk.greenBright(`[SUCCESS] 检查到是 oasistwa 目录，已经注释 external，请查看 ${this.configRelative}`)
       );
