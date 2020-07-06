@@ -2,6 +2,7 @@ import debug from "debug";
 import fs from "fs-extra";
 import path from "path";
 import chalk from "chalk";
+import { projectEnvs } from "./proj-env";
 const log = debug("link");
 
 debug.enable("link");
@@ -27,6 +28,11 @@ export async function link(options: LinkOptions) {
   });
   await Promise.all(promises);
 
+  for (let i = 0; i < projectEnvs.length; i++) {
+    if (projectEnvs[i].modifyExternal(options.root)) {
+      break;
+    }
+  }
   console.log(chalk.green(`[SUCCESS] `) + "link 成功，请确保仓库没有 external o3");
   console.log(chalk.green(`[SUCCESS] `) + `进入 ${options.oasisRoot} 可以开启 watch`);
 }
@@ -81,5 +87,3 @@ function removeTnpmLink(nodeModulePath: string, pkgs: { pkgPath: string; pkgJson
     fs.remove(path.join(nodeModulePath, dep));
   });
 }
-
-
