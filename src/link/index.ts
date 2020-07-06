@@ -5,8 +5,8 @@ import chalk from "chalk";
 import { projectEnvs } from "./proj-env";
 const log = debug("link");
 
-debug.enable("link");
-debug.enable("config");
+// debug.enable("link");
+// debug.enable("config");
 export interface LinkOptions {
   root: string;
   oasisRoot?: string;
@@ -28,13 +28,17 @@ export async function link(options: LinkOptions) {
   });
   await Promise.all(promises);
 
+  let findProject = false;
   for (let i = 0; i < projectEnvs.length; i++) {
     if (projectEnvs[i].modifyExternal(options.root)) {
+      findProject = true;
       break;
     }
   }
-  console.log(chalk.green(`[SUCCESS] `) + "link 成功，请确保仓库没有 external o3");
-  console.log(chalk.green(`[SUCCESS] `) + `进入 ${options.oasisRoot} 可以开启 watch`);
+  if(!findProject) {
+    console.log(chalk.greenBright(`[SUCCESS] `) + "link 成功，请确保仓库没有 external o3");
+  }
+  console.log(chalk.greenBright(`[SUCCESS] `) + `进入 ${options.oasisRoot} 可以开启 watch`);
 }
 
 /**

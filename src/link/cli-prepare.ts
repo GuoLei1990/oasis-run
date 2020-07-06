@@ -1,9 +1,9 @@
 import { getConfig, writeConfig } from "../common";
 import inquirer from "inquirer";
 
-import debug from "debug";
+// import debug from "debug";
 
-debug.enable("link");
+// debug.enable("link");
 
 const oasisRootKey = "oasisRoot";
 

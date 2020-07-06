@@ -7,11 +7,11 @@ function getTWAWebConfig(root: string) {
 }
 
 class OasisTWA {
-  private configRelative: string = "app/web/config.js";
+  private configRelative: string = "app/web/config/config.js";
 
   private check(root: string) {
     let pkg: object | any;
-    pkg = require(path.join(root, "packages.json"));
+    pkg = require(path.join(root, "package.json"));
     return pkg.name === "oasistwa";
   }
 
@@ -20,8 +20,12 @@ class OasisTWA {
       const configPath = path.join(root, this.configRelative);
       let configContent = fs.readFileSync(configPath, { encoding: "utf-8" });
       const re = configContent.match(`(.+'@alipay/o3': 'window.o3')`);
+      if (!re) {
+        console.log(chalk.redBright(`[LINK] 没有找到配置文件: ${this.configRelative}`));
+        return false;
+      }
       if (!re[0].trim().startsWith("//")) {
-        configContent = configContent.replace(`'@alipay/o3': 'window.o3'`, `// @alipay/o3': 'window.o3'`);
+        configContent = configContent.replace(`'@alipay/o3': 'window.o3'`, `// '@alipay/o3': 'window.o3'`);
         fs.writeFileSync(configPath, configContent, { encoding: "utf-8" });
       }
       console.log(
