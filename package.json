@@ -7,10 +7,11 @@
     "email": "kevin.hs@alipay.com"
   },
   "scripts": {
-    "dev": "tsc -w"
+    "dev": "tsc -w",
+    "build": "tsc"
   },
   "bin": {
-    "oa": "bin/cli"
+    "oar": "bin/cli"
   },
   "types": "types",
   "license": "MIT",
