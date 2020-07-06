@@ -1,11 +1,13 @@
 #!/usr/bin/env node
+
+import { prepareLink } from "./link/cli-prepare";
+
 const cli = require("cac")();
 const pkg = require("../package.json");
 const path = require("path");
 const defaultDir = ".dragaux";
 const defaultConfigFile = "config.js";
 const { e2e, gen, link } = require("../dist");
-
 
 cli
   .command("e2e")
@@ -33,11 +35,16 @@ cli
       });
     });
   });
-cli.command("link [oasis-dir]", "link oasis root repo").action((dir, options) => {
-  link({ root: process.env.PWD, oasisRoot: dir }).catch((e) => {
-    console.error(e);
+cli
+  .command("link [oasis-dir]", "link oasis root repo")
+  .option("-c, --clear", "clear oasis root")
+  .action((dir: string, options: { clear: undefined | boolean }) => {
+    prepareLink(dir, options.clear)
+      .then((oasisRoot) => link({ root: process.env.PWD, oasisRoot }))
+      .catch((e: Error) => {
+        console.error(e);
+      });
   });
-});
 // Display help message when `-h` or `--help` appears
 cli.help();
 // Display version number when `-v` or `--version` appears

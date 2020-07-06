@@ -1,10 +1,11 @@
 import debug from "debug";
 import fs from "fs-extra";
 import path from "path";
-import inquirer from "inquirer";
 import chalk from "chalk";
 const log = debug("link");
 
+debug.enable("link");
+debug.enable("config");
 export interface LinkOptions {
   root: string;
   oasisRoot?: string;
@@ -13,9 +14,7 @@ export interface LinkOptions {
 export async function link(options: LinkOptions) {
   log("current dir", options.root);
   log("oasis root", options.oasisRoot);
-  if (!options.oasisRoot) {
-    options.oasisRoot = await queryOasisRoot();
-  }
+
   const nodeModulePath = path.join(options.root, "node_modules");
   fs.ensureDirSync(nodeModulePath);
   const pkgs = getOasisPkgs(options.oasisRoot);
@@ -27,13 +26,14 @@ export async function link(options: LinkOptions) {
     return fs.symlink(pkg.pkgPath, destPath).catch((e) => console.error(e));
   });
   await Promise.all(promises);
+
   console.log(chalk.green(`[SUCCESS] `) + "link 成功，请确保仓库没有 external o3");
   console.log(chalk.green(`[SUCCESS] `) + `进入 ${options.oasisRoot} 可以开启 watch`);
 }
 
 /**
  * 获取 Oasis Packages
- * @param oasisRoot 
+ * @param oasisRoot
  */
 function getOasisPkgs(oasisRoot: string) {
   let pkgJson: object | any;
@@ -41,9 +41,9 @@ function getOasisPkgs(oasisRoot: string) {
     pkgJson = require(path.join(oasisRoot, "package.json"));
   } catch (e) {}
   if (!pkgJson || pkgJson.name !== "@alipay/o3-root") {
-    throw `${chalk.redBright("[ERROR]")} 根路径设置错误: ${chalk.redBright(
-      oasisRoot
-    )}，请设置 Oasis3D 开发 git 仓库根目录。`;
+    throw `${chalk.redBright("[ERROR]")} 根路径设置错误: ${chalk.redBright(oasisRoot)}，使用 ${chalk.bgRed(
+      "[oa link -c]"
+    )} 设置 Oasis3D 开发 git 仓库根目录。`;
   }
   const pkgsPath = path.join(oasisRoot, "packages");
   const pkgs = fs.readdirSync(pkgsPath).map((dir) => path.join(pkgsPath, dir));
@@ -63,8 +63,8 @@ function getOasisPkgs(oasisRoot: string) {
 
 /**
  * 删除 tnpm link 文件
- * @param nodeModulePath 
- * @param pkgs 
+ * @param nodeModulePath
+ * @param pkgs
  */
 function removeTnpmLink(nodeModulePath: string, pkgs: { pkgPath: string; pkgJson: object | any }[]) {
   const deps = fs.readdirSync(nodeModulePath).filter((dep) => dep.startsWith("_@alipay_"));
@@ -82,16 +82,4 @@ function removeTnpmLink(nodeModulePath: string, pkgs: { pkgPath: string; pkgJson
   });
 }
 
-function cacheOasisRoot() {
-  
-}
 
-async function queryOasisRoot() {
-  const result = await inquirer.prompt([
-    {
-      name: "oasisRoot",
-      message: "输入 Oasis3D 仓库根目录(oasis3d 目录而不是 packages/o3):"
-    }
-  ]);
-  return result.oasisRoot;
-}
