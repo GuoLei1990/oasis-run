@@ -1,6 +1,6 @@
 {
   "name": "@alipay/oasis-run",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "main": "index.js",
   "author": {
     "name": "HuSong",
@@ -16,6 +16,10 @@
   "bin": {
     "oar": "bin/cli"
   },
+  "files": [
+    "dist",
+    "bin"
+  ],
   "types": "types",
   "license": "MIT",
   "devDependencies": {
