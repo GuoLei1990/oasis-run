@@ -1,5 +1,3 @@
-import { chromium } from "playwright";
-
 interface GenOptions {
   images: string[];
   rule: string;
@@ -7,6 +5,8 @@ interface GenOptions {
 }
 
 export async function gen(options: GenOptions): Promise<Array<{ image: string; result: PromiseSettledResult<any> }>> {
+  const { chromium } = require("playwright");
+
   const browser = await chromium.launch({
     headless: false
   });

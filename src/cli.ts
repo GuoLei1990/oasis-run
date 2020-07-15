@@ -1,13 +1,16 @@
 #!/usr/bin/env node
 
 import { prepareLink } from "./link/cli-prepare";
+import { link } from "./link";
+import { e2e } from "./e2e";
+import { gen } from "./common";
 
 const cli = require("cac")();
 const pkg = require("../package.json");
 const path = require("path");
 const defaultDir = ".dragaux";
 const defaultConfigFile = "config.js";
-const { e2e, gen, link } = require("../dist");
+// const { e2e, gen, link } = require("../dist");
 
 cli
   .command("e2e")
