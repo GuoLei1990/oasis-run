@@ -18,7 +18,8 @@
   },
   "files": [
     "dist",
-    "bin"
+    "bin",
+    "oasis-ext-template"
   ],
   "types": "types",
   "license": "MIT",
