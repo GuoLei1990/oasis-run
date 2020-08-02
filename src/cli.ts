@@ -4,13 +4,13 @@ import { prepareLink } from "./link/cli-prepare";
 import { link } from "./link";
 import { e2e } from "./e2e";
 import { gen } from "./common";
+import { create } from "./create";
 
 const cli = require("cac")();
 const pkg = require("../package.json");
 const path = require("path");
 const defaultDir = ".dragaux";
 const defaultConfigFile = "config.js";
-// const { e2e, gen, link } = require("../dist");
 
 cli
   .command("e2e")
@@ -38,6 +38,7 @@ cli
       });
     });
   });
+
 cli
   .command("link [oasis-dir]", "link oasis root repo")
   .option("-c, --clear", "clear oasis root")
@@ -48,6 +49,10 @@ cli
         console.error(e);
       });
   });
+
+cli.command("create", "create new oasis module").action(() => {
+  create();
+});
 // Display help message when `-h` or `--help` appears
 cli.help();
 // Display version number when `-v` or `--version` appears

@@ -1,0 +1,32 @@
+{
+  "name": "@alipay/maf-generator-oasis-ext-template",
+  "version": "0.0.0",
+  "description": "my awesome MAF generator",
+  "repository": {
+    "url": "胡松/@alipay/maf-generator-oasis-ext-template",
+    "type": "git"
+  },
+  "author": "胡松 <kevin.hs@antfin.com>",
+  "license": "MIT",
+  "files": [
+    "maf.generator.js",
+    "maf.generator.ts",
+    "template"
+  ],
+  "scripts": {
+    "test": "jest test --testPathIgnorePatterns template",
+    "ci": "tnpm run test"
+  },
+  "dependencies": {
+    "@alipay/maf-types": "^0.2.0"
+  },
+  "devDependencies": {
+    "jest": "^24.8.0",
+    "@alipay/maf": "^0.2.0",
+    "@ali/ci": "^4.21.0",
+    "typescript": "3.9.6"
+  },
+  "publishConfig": {
+    "registry": "http://registry.npm.alibaba-inc.com"
+  }
+}
