@@ -1,7 +1,8 @@
 import fs = require("fs-extra");
 import path = require("path");
+import os from "os";
 import debug from "debug";
-const defaultConfigPath = path.join(__dirname, ".oasis/conf.json");
+const defaultConfigPath = path.join(os.homedir(), ".oasis/conf.json");
 const log = debug("config");
 
 let cache: any | object;
