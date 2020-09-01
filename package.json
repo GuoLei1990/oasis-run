@@ -1,6 +1,6 @@
 {
   "name": "@alipay/oasis-run",
-  "version": "0.0.7",
+  "version": "1.0.0",
   "main": "index.js",
   "author": {
     "name": "HuSong",
