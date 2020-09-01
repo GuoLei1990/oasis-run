@@ -1,3 +1,12 @@
+## [0.0.7](https://gitlab.alipay-inc.com/kevin.hs/dragaux/compare/v0.0.6...v0.0.7) (2020-09-01)
+
+
+### Features
+
+* add monitor ([4c6fd01](https://gitlab.alipay-inc.com/kevin.hs/dragaux/commit/4c6fd017647eacf8fd693f3b784fcbb817fce3c4))
+
+
+
 ## [0.0.6](https://gitlab.alipay-inc.com/kevin.hs/dragaux/compare/325d687f803402c528a9417cc70376c5e2de47c3...v0.0.6) (2020-08-06)
 
 
