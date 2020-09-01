@@ -3,6 +3,7 @@ import fs from "fs-extra";
 import path from "path";
 import chalk from "chalk";
 import { projectEnvs } from "./proj-env";
+import { monitor } from "../common/monitor";
 const log = debug("link");
 
 // debug.enable("link");
@@ -13,6 +14,7 @@ export interface LinkOptions {
 }
 
 export async function link(options: LinkOptions) {
+  monitor.logLinkPV();
   log("current dir", options.root);
   log("oasis root", options.oasisRoot);
 
@@ -35,7 +37,7 @@ export async function link(options: LinkOptions) {
       break;
     }
   }
-  if(!findProject) {
+  if (!findProject) {
     console.log(chalk.greenBright(`[SUCCESS] `) + "link 成功，请确保仓库没有 external o3");
   }
   console.log(chalk.greenBright(`[SUCCESS] `) + `进入 ${options.oasisRoot} 可以开启 watch`);
