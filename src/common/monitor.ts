@@ -12,7 +12,7 @@ class Monitor {
   }
 
   public logCreatePV() {
-    this.log(5, { d1: os.userInfo()?.username });
+    this.log(6, { d1: os.userInfo()?.username });
   }
 
   private log(code: number, options: { [key: string]: any; msg?: string } = {}) {
