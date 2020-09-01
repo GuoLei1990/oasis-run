@@ -1,3 +1,7 @@
+# [1.0.0](https://gitlab.alipay-inc.com/kevin.hs/dragaux/compare/v0.0.7...v1.0.0) (2020-09-01)
+
+
+
 ## [0.0.7](https://gitlab.alipay-inc.com/kevin.hs/dragaux/compare/v0.0.6...v0.0.7) (2020-09-01)
 
 
