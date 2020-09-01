@@ -1,3 +1,10 @@
+## 0.0.7
+
+| name | install size | reuqire time |
+| ---  | --- | --- |
+| @alipay/oasis-run@0.0.7 | 106.05MB | 2.479ms |
+
+
 ## 0.0.6
 
 | name | install size | reuqire time |
