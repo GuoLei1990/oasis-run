@@ -5,6 +5,7 @@ import { link } from "./link";
 import { e2e } from "./e2e";
 import { gen } from "./common";
 import { create } from "./create";
+import { release } from "./release";
 
 const cli = require("cac")();
 const pkg = require("../package.json");
@@ -53,6 +54,10 @@ cli
 cli.command("create", "create new oasis module").action(() => {
   create();
 });
+
+cli.command("release", "release oasis").action(()=>{
+  release();
+})
 // Display help message when `-h` or `--help` appears
 cli.help();
 // Display version number when `-v` or `--version` appears
