@@ -1,17 +1,10 @@
-// const path = require("path");
-// const fs = require("fs");
+const path = require("path");
+const fs = require("fs");
 const execa = require("execa");
-// const os = require("os");
+const os = require("os");
 
-// const CWD = process.cwd();
-// const CPU_LEN = os.cpus().length;
-
-// const basePackagePath = path.join(CWD, "packages");
-// const packagePathes = fs
-//   .readdirSync(basePackagePath)
-//   .map((p) => path.join(basePackagePath, p))
-//   .filter((p) => fs.statSync(p).isDirectory())
-//   .filter((p) => fs.existsSync(path.join(p, "package.json")));
+const CWD = process.cwd();
+const CPU_LEN = os.cpus().length;
 
 async function execCMD(cmdText: string, options: string[], cwd: string) {
   console.log(`exec ${cmdText} in ${cwd}`);
@@ -25,14 +18,19 @@ async function execCMD(cmdText: string, options: string[], cwd: string) {
   }
 }
 
-// const dividedPathes = [];
-
-// while (packagePathes.length > 0) {
-//   dividedPathes.push(packagePathes.splice(0, CPU_LEN));
-// }
-
 export async function divideExec(cmd: string, options: string[]) {
   const dividedPathes = [];
+
+  const basePackagePath = path.join(CWD, "packages");
+  const packagePathes = fs
+    .readdirSync(basePackagePath)
+    .map((p: string) => path.join(basePackagePath, p))
+    .filter((p: string) => fs.statSync(p).isDirectory())
+    .filter((p: string) => fs.existsSync(path.join(p, "package.json")));
+
+  while (packagePathes.length > 0) {
+    dividedPathes.push(packagePathes.splice(0, CPU_LEN));
+  }
   for (let i = 0; i < dividedPathes.length; i++) {
     const itemPathes = dividedPathes[i];
     const promises = itemPathes.map((p) => execCMD(cmd, options, p));
