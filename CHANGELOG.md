@@ -1,3 +1,12 @@
+## [1.0.1](https://gitlab.alipay-inc.com/kevin.hs/dragaux/compare/v1.0.0...v1.0.1) (2020-09-07)
+
+
+### Features
+
+* add release ([c1369a2](https://gitlab.alipay-inc.com/kevin.hs/dragaux/commit/c1369a261a219351f4b7f11d1aefbcc73f7b7501))
+
+
+
 # [1.0.0](https://gitlab.alipay-inc.com/kevin.hs/dragaux/compare/v0.0.7...v1.0.0) (2020-09-01)
 
 
