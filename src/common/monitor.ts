@@ -8,11 +8,13 @@ class Monitor {
   });
 
   public logLinkPV() {
-    this.log(5, { d1: os.userInfo()?.username });
+    const userInfo = os.userInfo();
+    this.log(5, { d1: userInfo ?? userInfo.username });
   }
 
   public logCreatePV() {
-    this.log(6, { d1: os.userInfo()?.username });
+    const userInfo = os.userInfo();
+    this.log(6, { d1: userInfo ?? userInfo.username });
   }
 
   private log(code: number, options: { [key: string]: any; msg?: string } = {}) {
