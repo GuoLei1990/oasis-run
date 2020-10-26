@@ -8,7 +8,8 @@ export async function release() {
   const version = require(path.join(cwd, "node_modules", "@lerna", "version"));
   const tag = await queryTag();
   await version({ forcePublish: true, exact: true });
-  divideExec(`tnpm`, ["publish", "--tag", tag]);
+  const basePackagePath = path.join(cwd, "packages");
+  divideExec(`tnpm`, ["publish", "--tag", tag], basePackagePath);
 }
 
 async function queryTag() {

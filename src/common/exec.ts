@@ -18,10 +18,9 @@ async function execCMD(cmdText: string, options: string[], cwd: string) {
   }
 }
 
-export async function divideExec(cmd: string, options: string[]) {
+export async function divideExec(cmd: string, options: string[], basePackagePath: string) {
   const dividedPathes = [];
 
-  const basePackagePath = path.join(CWD, "packages");
   const packagePathes = fs
     .readdirSync(basePackagePath)
     .map((p: string) => path.join(basePackagePath, p))

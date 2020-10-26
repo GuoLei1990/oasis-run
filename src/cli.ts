@@ -6,6 +6,8 @@ import { e2e } from "./e2e";
 import { gen } from "./common";
 import { create } from "./create";
 import { release } from "./release";
+import { releaseNpm } from "./release-npm";
+import semver from "semver";
 
 const cli = require("cac")();
 const pkg = require("../package.json");
@@ -55,9 +57,18 @@ cli.command("create", "create new oasis module").action(() => {
   create();
 });
 
-cli.command("release", "release oasis").action(()=>{
+cli.command("release", "release oasis").action(() => {
   release();
-})
+});
+
+cli.command("release-npm [version]", "release oasis to npm").action((version: string, options: { version: string }) => {
+  version = semver.valid(version);
+  if (version != null) {
+    releaseNpm(version);
+  } else {
+    throw new Error(`${version} is error`);
+  }
+});
 // Display help message when `-h` or `--help` appears
 cli.help();
 // Display version number when `-v` or `--version` appears
