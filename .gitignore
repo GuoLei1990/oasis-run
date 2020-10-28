@@ -6,3 +6,4 @@ tsconfig.tsbuildinfo
 yarn-error.log
 .idea
 diff.png
+.DS_Store

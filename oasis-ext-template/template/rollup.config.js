@@ -5,7 +5,7 @@ import pkg from "./package.json";
 
 const extensions = [".js", ".jsx", ".ts", ".tsx"];
 
-const name = "o3";
+const name = "<%= name %>";
 
 export default {
 	input: "./src/index.ts",
@@ -21,7 +21,18 @@ export default {
 		commonjs(),
 
 		// Compile TypeScript/JavaScript files
-		babel({ extensions, include: ["src/**/*"] }),
+		babel({
+			babelHelpers: 'bundled',
+			presets: [["@babel/preset-env"], "@babel/preset-typescript"],
+			extensions,
+			include: ["src/**/*"],
+			plugins: [
+				["@babel/plugin-proposal-decorators", { legacy: true }],
+				["@babel/plugin-proposal-class-properties", { loose: true }],
+				"@babel/plugin-proposal-optional-chaining",
+				"@babel/plugin-transform-object-assign",
+			],
+		}),
 	],
 
 	output: [
