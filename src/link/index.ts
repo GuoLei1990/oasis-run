@@ -79,7 +79,7 @@ function getOasisPkgs(oasisRoot: string) {
  * @param pkgs
  */
 function removeTnpmLink(nodeModulePath: string, pkgs: { pkgPath: string; pkgJson: object | any }[]) {
-  const deps = fs.readdirSync(nodeModulePath).filter((dep) => dep.startsWith("_@alipay_"));
+  const deps = fs.readdirSync(nodeModulePath).filter((dep) => dep.startsWith("_"));
   const checkDeps = pkgs.map(({ pkgJson }) => "_" + pkgJson.name.replace("/", "_"));
   const deleteDeps = deps.filter((dep) => {
     for (let i = 0; i < checkDeps.length; i++) {
