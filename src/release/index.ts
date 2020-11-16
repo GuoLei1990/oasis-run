@@ -9,7 +9,7 @@ export async function release() {
   const tag = await queryTag();
   await version({ forcePublish: true, exact: true });
   const basePackagePath = path.join(cwd, "packages");
-  divideExec(`tnpm`, ["publish", "--tag", tag], basePackagePath);
+  divideExec(`npm`, ["publish", "--tag", tag], basePackagePath);
 }
 
 async function queryTag() {
