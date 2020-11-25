@@ -8,6 +8,7 @@ import { create } from "./create";
 import { release } from "./release";
 import { releaseNpm } from "./release-npm";
 import semver from "semver";
+import { clean } from "./clean";
 
 const cli = require("cac")();
 const pkg = require("../package.json");
@@ -59,6 +60,10 @@ cli.command("create", "create new oasis module").action(() => {
 
 cli.command("release", "release oasis").action(() => {
   release();
+});
+
+cli.command("clean", "clean oasis package").action(() => {
+  clean();
 });
 
 cli.command("release-npm [version]", "release oasis to npm").action((version: string, options: { version: string }) => {
