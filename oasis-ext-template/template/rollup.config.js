@@ -49,7 +49,7 @@ export default {
 			format: "umd",
 			name,
 			globals: {
-				"@alipay/o3": "o3",
+				"oasis-engine": "o3",
 			},
 		},
 	],
