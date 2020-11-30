@@ -1,4 +1,4 @@
-import * as o3 from "@alipay/o3";
+import * as o3 from "oasis-engine";
 
 export class TODOMOFIFY extends o3.Script {
 	onAwake() {

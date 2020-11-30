@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { TODOMOFIFY } from "../src";
-import * as o3 from "@alipay/o3";
+import * as o3 from "oasis-engine";
 import "./App.css";
 
 function App() {

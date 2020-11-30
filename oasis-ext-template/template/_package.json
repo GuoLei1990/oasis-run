@@ -3,7 +3,7 @@
   "browser": "dist/browser.js",
   "module": "dist/module.js",
   "dependencies": {
-    "@alipay/o3": "^3.0.12"
+    "oasis-engine": "latest"
   },
   "devDependencies": {
     "@ali/ci": "latest",
