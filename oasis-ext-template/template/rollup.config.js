@@ -49,7 +49,7 @@ export default {
 			format: "umd",
 			name,
 			globals: {
-				"oasis-engine": "o3",
+				"oasis-engine": "oasisEngine",
 			},
 		},
 	],
