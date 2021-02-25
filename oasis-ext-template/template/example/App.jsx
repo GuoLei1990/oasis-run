@@ -12,8 +12,8 @@ function App() {
 		const root = engine.sceneManager.activeScene.createRootEntity();
 		const box = root.createChild("box");
 		const renderer = box.addComponent(o3.GeometryRenderer);
-		renderer.geometry = new o3.CuboidGeometry();
-		renderer.material = new o3.PBRMaterial();
+		renderer.geometry = new o3.CuboidGeometry(engine);
+		renderer.material = new o3.PBRMaterial(engine);
 
 		const cameraEntity = root.createChild("camera");
 		const camera = cameraEntity.addComponent(o3.Camera);
