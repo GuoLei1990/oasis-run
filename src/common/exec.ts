@@ -3,7 +3,6 @@ const fs = require("fs");
 const execa = require("execa");
 const os = require("os");
 
-const CWD = process.cwd();
 const CPU_LEN = os.cpus().length;
 
 async function execCMD(cmdText: string, options: string[], cwd: string) {

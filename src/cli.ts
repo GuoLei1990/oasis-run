@@ -5,7 +5,7 @@ import { link } from "./link";
 import { e2e } from "./e2e";
 import { gen } from "./common";
 import { create } from "./create";
-import { release } from "./release";
+import { onlyRelease, release } from "./release";
 import { releaseNpm } from "./release-npm";
 import semver from "semver";
 import { clean } from "./clean";
@@ -60,6 +60,10 @@ cli.command("create", "create new oasis module").action(() => {
 
 cli.command("release", "release oasis").action(() => {
   release();
+});
+
+cli.command("only-release", "only release").action(() => {
+  onlyRelease();
 });
 
 cli.command("clean", "clean oasis package").action(() => {
