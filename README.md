@@ -15,8 +15,13 @@ tnpm i @alipay/oasis-run -g
 oar link
 ```
 
-**第一次使用输入 Oasis3D 项目根目录。**
+**第一次使用输入 Oasis Engine 项目根目录。**
 
+如果引擎目录变化：
+
+```shell
+oar link -c
+```
 
 ### 2. create
 
