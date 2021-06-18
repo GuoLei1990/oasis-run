@@ -17,7 +17,7 @@ oar link
 
 **第一次使用输入 Oasis Engine 项目根目录。**
 
-如果引擎目录变化：
+如果引擎目录变化，使用：
 
 ```shell
 oar link -c
