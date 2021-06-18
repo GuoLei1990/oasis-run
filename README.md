@@ -31,7 +31,7 @@ oar link -c
 oar create
 ```
 
-![image.png](https://intranetproxy.alipay.com/skylark/lark/0/2020/png/161276/1599443722404-4dab68e8-b7b9-4fab-99d2-aa8dd9c75fce.png#align=left&display=inline&height=445&margin=%5Bobject%20Object%5D&name=image.png&originHeight=454&originWidth=633&size=11509&status=done&style=none&width=620)
+![oar](https://gw.alipayobjects.com/zos/OasisHub/b41756d2-9e06-45b1-a533-4a91decde9c0/oar.gif)
 
 
 ### 3. release

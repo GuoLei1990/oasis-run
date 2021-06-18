@@ -1,6 +1,6 @@
 {
   "name": "@alipay/oasis-run",
-  "version": "1.0.17",
+  "version": "1.0.18",
   "main": "index.js",
   "author": {
     "name": "HuSong",
@@ -21,6 +21,10 @@
     "bin",
     "oasis-ext-template"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git@gitlab.alipay-inc.com:kevin.hs/dragaux.git"
+  },
   "types": "types",
   "license": "MIT",
   "devDependencies": {
