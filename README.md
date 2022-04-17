@@ -1,7 +1,7 @@
 ## 安装
 
 ```shell
-tnpm i @alipay/oasis-run -g
+npm i @oasis-engine/oasis-run -g
 ```
 
 ## 使用
@@ -22,17 +22,6 @@ oar link
 ```shell
 oar link -c
 ```
-
-### 2. create
-
-创建 Oasis 二方库：
-
-```shell
-oar create
-```
-
-![oar](https://gw.alipayobjects.com/zos/OasisHub/b41756d2-9e06-45b1-a533-4a91decde9c0/oar.gif)
-
 
 ### 3. release
 
