@@ -10,9 +10,6 @@
     "dev": "tsc -w",
     "build": "tsc && rm -rf dist/common/.oasis"
   },
-  "publishConfig": {
-    "registry": "https://registry.npm.alibaba-inc.com"
-  },
   "bin": {
     "oar": "bin/cli"
   },
