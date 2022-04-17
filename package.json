@@ -1,10 +1,10 @@
 {
-  "name": "@alipay/oasis-run",
+  "name": "@oasis-engine/oasis-run",
   "version": "1.0.18",
   "main": "index.js",
   "author": {
     "name": "HuSong",
-    "email": "kevin.hs@alipay.com"
+    "email": "gz65555@gmail.com"
   },
   "scripts": {
     "dev": "tsc -w",
@@ -21,10 +21,6 @@
     "bin",
     "oasis-ext-template"
   ],
-  "repository": {
-    "type": "git",
-    "url": "git@gitlab.alipay-inc.com:kevin.hs/dragaux.git"
-  },
   "types": "types",
   "license": "MIT",
   "devDependencies": {
@@ -39,8 +35,6 @@
     "typescript": "^3.9.5"
   },
   "dependencies": {
-    "@alipay/maf": "^0.6.0",
-    "@alipay/yuyan-monitor-node": "^2.0.10",
     "cac": "^6.5.10",
     "chalk": "^4.1.0",
     "debug": "^4.1.1",

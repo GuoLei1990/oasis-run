@@ -3,7 +3,6 @@ import fs from "fs-extra";
 import path from "path";
 import chalk from "chalk";
 import { projectEnvs } from "./proj-env";
-import { monitor } from "../common/monitor";
 const log = debug("link");
 
 // debug.enable("link");
@@ -14,7 +13,6 @@ export interface LinkOptions {
 }
 
 export async function link(options: LinkOptions) {
-  monitor.logLinkPV();
   log("current dir", options.root);
   log("oasis root", options.oasisRoot);
 

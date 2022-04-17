@@ -4,7 +4,6 @@ import { prepareLink } from "./link/cli-prepare";
 import { link } from "./link";
 import { e2e } from "./e2e";
 import { gen } from "./common";
-import { create } from "./create";
 import { onlyRelease, release } from "./release";
 import { releaseNpm } from "./release-npm";
 import semver from "semver";
@@ -53,10 +52,6 @@ cli
         console.error(e);
       });
   });
-
-cli.command("create", "create new oasis module").action(() => {
-  create();
-});
 
 cli.command("release", "release oasis").action(() => {
   release();
