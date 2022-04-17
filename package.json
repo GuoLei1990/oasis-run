@@ -18,6 +18,9 @@
     "bin",
     "oasis-ext-template"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "types": "types",
   "license": "MIT",
   "devDependencies": {
