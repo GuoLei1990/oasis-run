@@ -50,7 +50,7 @@ function getOasisPkgs(oasisRoot: string) {
   try {
     pkgJson = require(path.join(oasisRoot, "package.json"));
   } catch (e) {}
-  if (!pkgJson || pkgJson.name !== "oasis-root") {
+  if (!pkgJson) {
     throw `${chalk.redBright("[ERROR]")} 根路径设置错误: ${chalk.redBright(oasisRoot)}，使用 ${chalk.bgRed(
       "[oa link -c]"
     )} 设置 Oasis3D 开发 git 仓库根目录。`;
