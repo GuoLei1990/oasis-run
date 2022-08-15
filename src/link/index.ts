@@ -52,7 +52,7 @@ function getOasisPkgs(oasisRoot: string) {
   } catch (e) {}
   if (!pkgJson) {
     throw `${chalk.redBright("[ERROR]")} 根路径设置错误: ${chalk.redBright(oasisRoot)}，使用 ${chalk.bgRed(
-      "[oa link -c]"
+      "[oar link -c]"
     )} 设置 Oasis3D 开发 git 仓库根目录。`;
   }
   const pkgsPath = path.join(oasisRoot, "packages");
